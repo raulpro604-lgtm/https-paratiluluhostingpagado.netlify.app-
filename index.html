@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gracias por tu amistad, Lulu</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Kalam&display=swap');
+
+    body {
+      margin: 0;
+      background: #000;
+      color: #ff4dcc;
+      font-family: 'Pacifico', cursive;
+      overflow: hidden;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    h1 {
+      position: absolute;
+      top: 20vh;
+      width: 100%;
+      font-size: 3.5em;
+      background: linear-gradient(45deg, #ff4dcc, #ff0066, #ff3300, #ff9900, #ffff00, #ff4dcc);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: colorShift 6s ease infinite;
+      text-shadow: 0 0 10px #fff2;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    @keyframes colorShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .poema {
+      position: absolute;
+      top: 55vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Kalam', cursive;
+      font-size: 1.1em;
+      color: #ff99ff;
+      text-shadow: 0 0 6px #ff4dccaa;
+      pointer-events: none;
+      z-index: 10;
+      white-space: pre-line;
+    }
+
+    .lluvia {
+      position: absolute;
+      top: -120px;
+      font-size: 1.8em;
+      will-change: transform;
+      animation: caer 6s linear forwards;
+      pointer-events: none;
+      white-space: nowrap;
+      background: linear-gradient(45deg, #ff4dcc, #ff99ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 8px #ff4dcc88;
+    }
+
+    @keyframes caer {
+      to {
+        transform: translateY(120vh) rotate(360deg) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    img.lluvia {
+      width: 90px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ff4dcc;
+      animation: caer 6s linear forwards;
+    }
+
+    .marca {
+      position: fixed;
+      bottom: 8px;
+      right: 12px;
+      font-family: 'Kalam', cursive;
+      font-size: 0.75em;
+      color: #ff4dcc;
+      pointer-events: none;
+      z-index: 9999;
+      text-align: right;
+      animation: arcoiris 4s linear infinite;
+    }
+
+    @keyframes arcoiris {
+      0%   { color: #ff4dcc; }
+      16%  { color: #ff0066; }
+      33%  { color: #ff3300; }
+      50%  { color: #ff9900; }
+      66%  { color: #ffff00; }
+      83%  { color: #ff99ff; }
+      100% { color: #ff4dcc; }
+    }
+
+    .marca a {
+      animation: parpadeo 1.2s infinite;
+    }
+
+    @keyframes parpadeo {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.6; }
+    }
+
+    #activarSonido {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff4dcc;
+      color: black;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 50%;
+      font-size: 1.2em;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 0 10px #ff4dcc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Gracias por tu amistad, Lulu</h1>
+  <div class="poema">
+    Para Lulu, mi compa del alma  
+    Gracias por cada risa, cada charla, cada momento  
+    Luci de los cielos, Lulu de mis días  
+    que cada estrella aprenda de tu brillo  
+    y cada latido mío repita tu nombre  
+    con la ternura que solo tú sabes regalar.
+  </div>
+  <div class="marca">
+    Página creada por Abraham Hernández Ramírez<br>
+    Todos los derechos reservados © 2025<br>
+    <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFDA.pdf" target="_blank">Ley Federal del Derecho de Autor (LFDA)</a>
+  </div>
+
+  <!-- Música -->
+  <audio id="musica" loop muted>
+    <source src="https://files.catbox.moe/5asuta.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Botón para activar sonido -->
+  <button id="activarSonido" onclick="activarSonido()">🔊</button>
+
+  <script>
+    const musica = document.getElementById("musica");
+    const botonSonido = document.getElementById("activarSonido");
+
+    function activarSonido() {
+      musica.muted = false;
+      musica.play();
+      botonSonido.style.display = "none";
+    }
+
+    document.body.addEventListener("click", function () {
+      if (musica.muted) activarSonido();
+    }, { once: true });
+
+    const mensajes = [
+      "🤗 Gracias por tu amistad", "💫 Eres un gran apoyo", "🌟 Brillas en mi vida",
+      "🌈 Haces mejores mis días", "🎶 Risas que quedan para siempre",
+      "🌸 Amistad sincera", "🧡 Compa del alma", "🌻 Siempre estás ahí",
+      "🕊️ Paz que transmites", "🌺 Gracias por existir, amigo"
+    ];
+
+    const emojis = ["🤗", "💫", "🌟", "🌈", "🎶", "🌸", "🧡", "🌻", "🕊️", "🌺"];
+
+    const fotos = [
+      "https://i.ibb.co/3sWfM3K/flor1.jpg",
+      "https://i.ibb.co/z5pCgV9/flor2.jpg",
+      "https://i.ibb.co/6y3p1bT/flor3.jpg"
+    ];
+
+    function crearElemento(tipo) {
+      const el = document.createElement(tipo === "img" ? "img" : "div");
+      el.className = "lluvia";
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.animationDuration = (Math.random() * 2 + 4) + "s";
+
+      if (tipo === "img") {
+        el.src = fotos[Math.floor(Math.random() * fotos.length)];
+      } else if (tipo === "texto") {
+        el.textContent = mensajes[Math.floor(Math.random() * mensajes.length)];
+      } else if (tipo === "emoji") {
+        el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      }
+
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 6000);
+    }
+
+    // Lluvia infinita
+    setInterval(() => {
+      crearElemento("texto");
+      crearElemento("emoji");
+    }, 400);
+
+    // Fotos al clic
+    document.body.addEventListener("click", function (e) {
+      if (e.target.tagName !== "BUTTON" && e.target.tagName !== "AUDIO") {
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => crearElemento("img"), i * 80);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
